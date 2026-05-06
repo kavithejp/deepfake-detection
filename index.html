@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIVENTRA | Security Command Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Floating Cyber Grid -->
+        <div class="cyber-grid"></div>
+        <div class="noise-overlay"></div>
+
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-circle">
+                    <i data-lucide="shield-alert" class="logo-icon"></i>
+                </div>
+                <span class="logo-text">AIVENTRA<span>AI</span></span>
+            </div>
+            
+            <div class="nav-links">
+                <button class="nav-item active" data-view="dashboard">
+                    <i data-lucide="monitor-dot"></i>
+                    <span>Command Center</span>
+                </button>
+                <button class="nav-item" data-view="biometrics">
+                    <i data-lucide="fingerprint"></i>
+                    <span>Real-time Biometrics</span>
+                </button>
+                <button class="nav-item" data-view="analytics">
+                    <i data-lucide="activity"></i>
+                    <span>Threat Intel</span>
+                </button>
+                <button class="nav-item" data-view="logs">
+                    <i data-lucide="history"></i>
+                    <span>Detection Logs</span>
+                </button>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="system-health">
+                    <div class="health-header">
+                        <span>Remote Engine</span>
+                        <span class="pulse-dot"></span>
+                    </div>
+                    <div class="health-status">ACTIVE POLLING</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h2 id="view-title">COMMAND CENTER</h2>
+                    <p>Monitoring AI Threats from YOLO Neural Engine</p>
+                </div>
+                <div class="user-profile">
+                    <div class="status-badge" id="connStatus">CONNECTED TO ENGINE</div>
+                    <div class="timestamp" id="timestamp">2024.05.05 14:00:00</div>
+                </div>
+            </header>
+
+            <div class="view-container">
+                <!-- Dashboard Overview -->
+                <section class="view active" id="view-dashboard">
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <span class="stat-label">Face Recognition</span>
+                            <span class="stat-value" id="faceStatus">WAITING...</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Voice Integrity</span>
+                            <span class="stat-value" id="voiceStatus">WAITING...</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Last Threat Level</span>
+                            <span class="stat-value" id="trustPercentMini">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <!-- Decision Box (Now more prominent) -->
+                        <div class="main-panel glass central-decision">
+                            <div class="panel-header">
+                                <h3>ACTIVE SECURITY STATUS</h3>
+                                <div class="badge">SECURE_NODE_01</div>
+                            </div>
+                            <div class="decision-display">
+                                <div class="decision-label">CURRENT SYSTEM VERDICT</div>
+                                <div class="decision-value" id="decisionValue">STANDBY</div>
+                                <div class="trust-bar-container">
+                                    <div class="trust-bar-fill" id="trustBarFill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="side-panel glass">
+                            <div class="panel-header"><h3>LIVE THREAT GRAPH</h3></div>
+                            <div class="chart-wrapper">
+                                <canvas id="trustChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Biometrics (Placeholder for now) -->
+                <section class="view" id="view-biometrics">
+                    <div class="biometric-grid">
+                        <div class="trust-display glass full-width">
+                            <h3>NEURAL TRUST EVALUATION</h3>
+                            <div class="circular-progress-large">
+                                <svg viewBox="0 0 100 100">
+                                    <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                    <circle class="progress" cx="50" cy="50" r="45" id="trustCircle"></circle>
+                                </svg>
+                                <div class="percent-large" id="trustPercent">0%</div>
+                            </div>
+                            <p class="sub-text">Waiting for detection data from YOLO engine...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Logs View -->
+                <section class="view" id="view-logs">
+                    <div class="terminal-container glass">
+                        <div class="terminal-header">
+                            <div class="dots"><span class="red"></span><span class="yellow"></span><span class="green"></span></div>
+                            <span>AIVENTRA_SECURE_KERNEL.EXE</span>
+                        </div>
+                        <div class="log-content" id="logContent">
+                            <div class="log-entry">> Initializing AIVENTRA Remote Monitoring...</div>
+                            <div class="log-entry">> Connecting to YOLO Neural Engine (Python)...</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
